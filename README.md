@@ -9,7 +9,7 @@
 ## Как запустить проект
 1. Клонируйте репозиторий:
 ``` bash
-git clone <URL_репозитория>
+git clone <https://github.com/karasidnez/Kotlin_Advanced_Lab_9_10_Timonin>
 ``` 
 2. Откройте проект в IntelliJ IDEA. 
 3. Запустите любой пример через контекстное меню или напрямую из `main`. 
