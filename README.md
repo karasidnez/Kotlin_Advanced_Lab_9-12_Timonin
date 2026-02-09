@@ -179,6 +179,69 @@ fun main() {
     println("Имя: $name, Возраст: $age")  
 }
 ```
+# Galaxy Outpost Manager
+
+Учебный проект на Kotlin, демонстрирующий основы объектно-ориентированного программирования и архитектурные приёмы языка.
+
+## Изученные темы и их применение
+
+### Sealed-классы
+
+Sealed-классы используются для представления ограниченного набора состояний или результатов, которые известны на этапе компиляции. Они позволяют:
+- Гарантировать обработку всех возможных вариантов при использовании `when`
+- Безопасно использовать конструкцию `when` без ветки `else`
+- Удобно описывать состояния, события и результаты действий
+
+```kotlin
+sealed class ModuleResult {
+    data class Success(val message: String) : ModuleResult()
+    data class ResourceProduced(val resourceName: String, val amount: Int) : ModuleResult()
+    data class NotEnoughResources(
+        val resourceName: String, 
+        val required: Int, 
+        val available: Int
+    ) : ModuleResult()
+    data class Error(val reason: String) : ModuleResult()
+    object Processing : ModuleResult() 
+}
+
+fun handleModuleResult(result: ModuleResult) {
+    when (result) {
+        is ModuleResult.Success -> println("Успех: ${result.message}")
+        is ModuleResult.ResourceProduced -> {
+            println("Произведено ${result.amount} единиц ${result.resourceName}")
+        }
+        is ModuleResult.NotEnoughResources -> {
+            println("Недостаточно ${result.resourceName}. Нужно: ${result.required}, есть: ${result.available}")
+        }
+        is ModuleResult.Error -> println("Ошибка: ${result.reason}")
+        ModuleResult.Processing -> println("Модуль в процессе работы")
+    }
+}
+```
+### Object в Kotlin
+object — это специальная конструкция Kotlin, которая создаёт единственный экземпляр класса (Singleton).Особенности:
+- создаётся при первом обращении;
+- существует в одном экземпляре;
+- не имеет конструктора. Пример: глобальный логгер
+```Kotlin
+object Logger {
+private var counter = 0
+fun log(message: String) {
+counter++
+println("[$counter] $message")
+}
+}
+```
+Использование:
+- Logger.log("Инициализация системы")
+- Logger.log("Модуль запущен")
+- object удобно использовать для:
+- логгеров;
+- конфигураций;
+- состояний без данных в sealed-классах;
+- утилитарных классов.
+
 
 ## Автор
 [Тимонин Иван Витальевич]
