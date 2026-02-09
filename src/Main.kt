@@ -28,12 +28,13 @@ fun main() {
     manager.add(gas)
     val bonus = minerals.copy(amount = minerals.amount + 50)
     println("Копия минералов с бонусом: $bonus")
-    val generatorResult = generator.performAction(manager)
-    val labResult = lab.performAction(manager)
-    handleModuleResult(generatorResult)
-    handleModuleResult(labResult)
-    manager.printAll()
+//    val generatorResult = generator.performAction(manager)
+//    val labResult = lab.performAction(manager)
+//    handleModuleResult(generatorResult)
+//    handleModuleResult(labResult)
+//    manager.printAll()
 
 
 
 }
+
