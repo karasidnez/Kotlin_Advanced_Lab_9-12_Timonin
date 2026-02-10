@@ -9,10 +9,10 @@ class EnergyGenerator : OutpostModule(name = "Генератор энергии"
         val energy = manager.get("Energy")
         return if (energy != null) {
             energy.amount += 20
-            ModuleResult.ResourceProduced(resourceName = "Energy", amount = 20)
+            ModuleResult.ResourceProduced("Energy", 20)
         } else {
-            manager.add(OutpostResource(id = 99, name = "Energy", amount = 20))
-            ModuleResult.Success(message = "Энергия создана впервые")
+            manager.add(OutpostResource(99, "Energy", 20))
+            ModuleResult.Success("Энергия создана впервые")
         }
     }
 }

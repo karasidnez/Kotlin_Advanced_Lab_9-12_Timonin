@@ -13,4 +13,6 @@ class ResourseManager {
         println("Ресурсы базы")
         resources.forEach { println("${it.name}: ${it.amount}")}
     }
+    fun getAll(): List<OutpostResource> = resources.toList()
+
 }
